@@ -130,10 +130,14 @@ int main(int argc,char** argv){
             t[k++] = c-'0';
             i++;   // to check whether the it's a single digit num or more
             char d = exp[i]; 
-            while(isdigit(d)){
+            while(isdigit(d)&&d!='.'){
                 t[k++] = d-'0';
                 i++;
                 d = exp[i];
+            }
+            if(d=='.'){
+                perror("Floating point values are not supported yet!\n");
+                exit(1);
             }
             i--;   // the last character read was non-digit (while loop exit)
             int v = convertToInt(t,k);
